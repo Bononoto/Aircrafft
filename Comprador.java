@@ -4,6 +4,7 @@ public class Comprador {
     private String name;
     private String cpf;
     private Seat seat;
+    public double total;
 
     public String getName() {
         return name;
@@ -26,5 +27,12 @@ public class Comprador {
     public Comprador(String name, String cpf) {
         this.name = name;
         this.cpf = cpf;
+        this.total = 0;
     }
+    
+    public double getValor() {
+        return this.total;
+    }
+    
+    
 }

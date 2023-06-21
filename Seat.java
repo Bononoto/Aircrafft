@@ -4,6 +4,8 @@ public class Seat
     private String name;
     private String cpf;
     public boolean occupied;
+    public double valor;
+    
 
     // Empty constructor
     public Seat()
@@ -15,11 +17,12 @@ public class Seat
     }
 
     // Constructor with seat code
-    public Seat(String code)
+    public Seat(String code, double valor)
     {
         this.code = code;
         name = "";
         cpf = "";
+        this.valor = valor;
         occupied = false;
     }
 
@@ -39,13 +42,17 @@ public class Seat
         this.name = name;
     }
 
+    public String getCpf(){
+        return cpf;
+    }
 
     // Method to sell a seat object and fill the name and cpf fields
-    public void sell(Seat [][] seats, int line, int column, String name, String cpf)
+    public double sell(Seat [][] seats, int line, int column, String name, String cpf)
     {
         seats[line][column].name = name;
         seats[line][column].cpf = cpf;
         seats[line][column].occupied = true;
+        return seats[line][column].valor;
     }
 
 
@@ -84,4 +91,6 @@ public class Seat
         this.cpf = cpf;
         this.occupied = occupied;
     }
+    
+    
 }
