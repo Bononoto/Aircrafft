@@ -1,3 +1,10 @@
+/**
+ * Aircraft is a plane ticket selling program
+ * 
+ * @author Gabriel Bonoto and Juliano Maia
+ * @version 2023.06.23
+ */
+
 import java.util.Scanner;
 public class Main
 {
@@ -101,7 +108,7 @@ public class Main
 
     // Method to print command menu
     public static void showMenu () {
-        System.out.println("Opções:");
+        System.out.println("Opcoes:");
         System.out.println("Digite (1) para exibir os lugares do aviao");
         System.out.println("Para comprar  um assento digite: comprar + o assento que deseja");
         System.out.println("Digite (3) para ver sua passagem");
