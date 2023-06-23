@@ -3,7 +3,7 @@ public class Main
 {
     public static void main(String[] args) throws Exception
     {
-
+        // Populates the 4D flights array destination*planetypes*flightcompanies*flighttimes
         Aircraft flights[][][][] = new Aircraft[Aircraft.getDestinationsNum()][Aircraft.getPlanesNum()][Aircraft.getFlightCompaniesNum()][Aircraft.getFlightTimesNum()];
 
         for(int i = 0; i < flights.length; i++)
@@ -23,20 +23,24 @@ public class Main
         Scanner sc = new Scanner(System.in);
         System.out.println("Venda de passagens\n");
 
+        // Creates an User object with an input from user data
         User user = getUserData();
         // User user = new User("Joao", "012345678912");
 
-        ;
-
+        // If user doesn't have any flights on his account
         if(!user.checkFlights())
         {
             System.out.println("Usuario registrado com sucesso.\n");
+
+            // Goes to the chooseFlight menu for the user to find the aircraft they want to buy seats from
             user.addFlight(chooseFlight());
         }
         else
         {
             System.out.println("Usuario ja esta registrado no sistema.\nBem vindo de volta " + user.getName() +"!\n");
             String choice = "";
+
+            // If user has already purchased seats on any plane, it will ask to edit the last flight
             do
             {
                 System.out.println("Digite (1) mudar seus assentos da ultima compra.\nDigite (2) para nova compra. ");
@@ -44,11 +48,10 @@ public class Main
                 if (!choice.equals("1") && !choice.equals("2")) {
                     System.out.println("Comando invalido\n");
                 }
-
-                //System.out.println(!(choice.equals("1") || choice.equals("2")));
             }
             while (!(choice.equals("1") || choice.equals("2")));
 
+            // If they haven't purchased any seats yet
             if (choice.equalsIgnoreCase("2"))
             {
                 System.out.println();
@@ -56,6 +59,7 @@ public class Main
             }            
         }
 
+        // Sets the variables from the received array to better visualize it
         int[] lastFlight = user.lastFlight();
         int userFlightDestination = lastFlight[0];
         int userFlightCompany = lastFlight[1];
@@ -64,8 +68,10 @@ public class Main
 
         String command;
 
+        // Command menu loop
         do
         {
+            // Prints command menu
             showMenu();
             command = sc.nextLine();
             if (command.startsWith("1"))
@@ -93,6 +99,7 @@ public class Main
         sc.close();   
     }
 
+    // Method to print command menu
     public static void showMenu () {
         System.out.println("Opções:");
         System.out.println("Digite (1) para exibir os lugares do aviao");
@@ -101,13 +108,14 @@ public class Main
         System.out.println("Digite (4) para sair do sistema\n");
     }
 
+    // Method to get user data and return as an User object
     public static User getUserData ()
     {
         Scanner sc = new Scanner(System.in);
         String username = "";
         String cpf = "";
 
-        System.out.println("Crie ou faça login na sua conta");
+        System.out.println("Crie ou faca login na sua conta");
 
         do
         {
@@ -130,11 +138,10 @@ public class Main
             break;
         }
 
-        //System.out.println(cpf);
-
         return new User(username, cpf);
     }
 
+    // Method to return an array of the flight chosen by the user
     public static int[] chooseFlight()
     {
         Scanner sc = new Scanner(System.in);

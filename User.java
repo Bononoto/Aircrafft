@@ -4,11 +4,13 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class User {
+    // Object variables
     private String name;
     private String cpf;
     public double total;
     int flights[][];
 
+    // Getters
     public String getName() {
         return name;
     }
@@ -17,17 +19,21 @@ public class User {
         return cpf;
     }
 
+    // User constructor with name and cpf arguments
     public User(String name, String cpf) {
         this.name = name;
         this.cpf = cpf;
         this.total = 0;
 
         this.flights = new int[10][4];
+
+        // Sets every first element to -1 to be used as a false boolean
         for (int i = 0; i < flights.length; i++)
         {
             flights[i][0] = -1;
         }
 
+        // Tries to read user CSV file
         try
         {
             read();
@@ -42,6 +48,7 @@ public class User {
         return this.total;
     }
     
+    // Method to read a CSV file for specified user
     public void read() throws Exception
     {
         File file = new File("user-" + cpf);
@@ -66,6 +73,7 @@ public class User {
         }        
     }
 
+    // Method to write CSV file for specified user
     public void write() throws Exception
     {
         PrintStream file = new PrintStream("user-" + cpf);
@@ -90,10 +98,12 @@ public class User {
         file.close();
     }
 
+    // Checks if user has any flights on his array
     public boolean checkFlights()
     {
         for (int i = 0; i < flights.length; i++)
         {
+            // If first element is not -1, then it is a valid flight
             if (flights[i][0] != -1)
             {
                 return true;
@@ -102,9 +112,11 @@ public class User {
         return false;
     }
 
+    // Finds the index of the last flight
     public int[] lastFlight()
     {
         int index = 0;
+        // The last flight will be the first where a -1 is found
         for (int i = 0; i < flights.length; i++)
         {            
             if (flights[i][0] != -1)
@@ -115,11 +127,12 @@ public class User {
         return flights[index];
     }
 
+    // Returns the number of flights the user has on his account
     public int flightsNum()
     {
         int lastFlight = 0;
         for (int i = 0; i < flights.length; i++)
-        {            
+        {
             if (flights[i][0] != -1)
             {
                 lastFlight = i;
@@ -128,6 +141,7 @@ public class User {
         return lastFlight;
     }
 
+    // Method to add a flight array to User fligths array
     public void addFlight(int[] flight)
     {
         int newFlightIndex = 0;
@@ -147,20 +161,4 @@ public class User {
             throw new IllegalArgumentException();
         }
     }
-
-    // public String printFlights()
-    // {
-    //     String userFlightTable = "";
-    //     for (int i = 0; i < flights.length; i++)
-    //     {            
-    //         if (flights[i][0] != -1)
-    //         {
-    //             userFlightTable += i + "\n  Destination: " + Aircraft.getDestinationName(flights[i][0])
-    //                                 + "Plane: " + Aircraft.getPlaneName(flights[i][1])
-    //                                 + "Company: " + Aircraft.getFlightCompanyName(flights[i][2])
-    //                                 + "Time: " + Aircraft.getFlightTime(flights[i][3]) +"\n";
-    //         }
-    //     }
-    //     return userFlightTable;
-    // }
 }

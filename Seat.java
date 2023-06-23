@@ -1,5 +1,6 @@
 public class Seat
 {
+    // Object variables
     private String code;
     private String name;
     private String cpf;

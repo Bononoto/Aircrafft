@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 
 public class Aircraft
 {
+    // Object variables
     private String destination;
     private String aircraftName;
     private String flightCompany;
@@ -24,6 +25,7 @@ public class Aircraft
     private int seatsNum;
     private int vacantSeats;
 
+    // Static variables
     private static String planes[] = {"Embraer E195-E2", "Cessna Grand Caravan", "Boeing 747"};
     private static int flightsSeatSize[][] = {{16, 4}, {5, 2}, {25, 10}};
     private static int flightsSeatSpaces[][][] = {{{2}, {13}}, {{1}, {4}}, {{3, 7}, {10, 20}}};
@@ -33,6 +35,7 @@ public class Aircraft
     private static String flightCompanyNames[] = {"Azul", "Gol", "Latam"};
     private static String flightTimes[] = {"00:00","3:30", "8:00", "9:45", "11:30", "13:00", "15:45", "17:30", "19:15", "22:30"};
 
+    // Constructor for the Aircraft object
     public Aircraft(int destination, int flightCompany, int plane, int flightTime)
     {
         this.aircraftName = planes[plane];
@@ -60,6 +63,7 @@ public class Aircraft
         }
 
         seatsNum = seats.length*seats[0].length;
+        // Tries to read a CSV file for the object. If it exists, it will update the fiels of the object.
         try
         {
             read();
@@ -69,6 +73,7 @@ public class Aircraft
             e.printStackTrace();
         }
 
+        // Counts vacant seats
         vacantSeats = seatsNum;
         for (int i = 0; i < numRows; i++)
         {
@@ -82,6 +87,7 @@ public class Aircraft
         }
     }
 
+    // Getters
     public static int getDestinationsNum()
     {
         return destinations.length;
@@ -127,6 +133,7 @@ public class Aircraft
         return seats[seatRow][seatColumn].getName();
     }
 
+    // Calculates the price based on seat row, destination and type of plane
     public static double findPrice(int row, int destination, int plane)
     {
         double price;
@@ -212,7 +219,7 @@ public class Aircraft
                     next = column - 1;
                 }
 
-                // (WIP) Asks the user to buy the seat next to the first
+                // Asks the user to buy the seat next to the first
                 if (!seats[row][next].checkOccupied())
                 {
                     System.out.println("Deseja reservar o assento ao lado? (sim/nao)");
@@ -233,6 +240,8 @@ public class Aircraft
             {
                 System.out.println("Comando inválido");
             }
+
+            // Tries to write to the specified seats CSV based on the Aircraft object
             try
             {
                 write();
@@ -373,6 +382,7 @@ public class Aircraft
         printTicket(user);
     }
 
+    // Prints specified arrays as tables
     public static String printDestinationTable()
     {
         String table = "";
@@ -413,6 +423,7 @@ public class Aircraft
         return table;
     }
 
+    // Print users' ticket
     public void printTicket(User user){
         System.out.println("POA -> " + destination);
         System.out.println(date + " " + time + " " + flightName + "\n");

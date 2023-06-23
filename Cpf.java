@@ -1,4 +1,5 @@
 public class Cpf {
+    // Checks if cpf is valid
     public static boolean checkValid(String cpf)
     {
         if(cpf.length() == 14)
@@ -33,6 +34,7 @@ public class Cpf {
         return false;
     }
 
+    // If only numbers, formats cpf to the 14 String with periods and hyphen
     public static String formatCpf(String cpf)
     {
         String formattedCpf = "";
