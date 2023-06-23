@@ -3,10 +3,9 @@ public class Seat
     private String code;
     private String name;
     private String cpf;
-    public boolean occupied;
-    public double valor;
+    private boolean occupied;
+    private double price;
     
-
     // Empty constructor
     public Seat()
     {
@@ -14,55 +13,44 @@ public class Seat
         name = "";
         cpf = "";
         occupied = false;
+        price = 0.0;
     }
 
-    // Constructor with seat code
-    public Seat(String code, double valor)
+    // Constructor with seat code and price
+    public Seat(String code, double price)
     {
         this.code = code;
         name = "";
         cpf = "";
-        this.valor = valor;
         occupied = false;
+        this.price = price;
     }
 
     // Constructor with all fields
-    public Seat(String code, String name, String cpf, boolean occupied)
+    public Seat(String code, String name, String cpf, double price, boolean occupied)
     {
         this.code = code;
         this.name = name;
         this.cpf = cpf;
+        this.price = price;
         this.occupied = occupied;
     }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    private void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCpf(){
-        return cpf;
-    }
-
-    // Method to sell a seat object and fill the name and cpf fields
-    public double sell(Seat [][] seats, int line, int column, String name, String cpf)
+    
+    // Method to sell a seat object and fill the name and cpf fields, returning the price
+    public double sell(String name, String cpf)
     {
-        seats[line][column].name = name;
-        seats[line][column].cpf = cpf;
-        seats[line][column].occupied = true;
-        return seats[line][column].valor;
+        this.name = name;
+        this.cpf = cpf;
+        occupied = true;
+        return price;
     }
-
-
 
     // Makes a Seat object vacant
-    public void vacant(Seat [][] seats, int line, int column)
+    public void vacant()
     {
-        seats[line][column].name = "";
-        seats[line][column].cpf = "";
-        seats[line][column].occupied = false;
+        name = "";
+        cpf = "";
+        occupied = false;
     }
 
     // Getter for the "occupied" boolean variable
@@ -77,20 +65,40 @@ public class Seat
         this.code = code;
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getCpf()
+    {
+        return cpf;
+    }
+
+    public double getPrice()
+    {
+        return price;
+    }
+    
     // Prints the Seat object in CSV format
     public String print()
     {
-        return code+","+name+","+cpf+","+occupied+";\n";
+        return code+","+name+","+cpf+","+price+","+occupied+";\n";
+    }
+
+    // Prints the Seat object for the user
+    public String printTicket()
+    {
+        return code+"\n    Nome: "+name+", CPF: "+cpf+"\n";
     }
 
     // Reads CSV format into a Seat object
-    public void read(String code, String name, String cpf, boolean occupied)
+    public void read(String code, String name, String cpf, double Price, boolean occupied)
     {
         this.code = code;
         this.name = name;
         this.cpf = cpf;
+        this.price = price;
         this.occupied = occupied;
     }
-    
-    
 }
