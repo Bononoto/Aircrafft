@@ -371,22 +371,7 @@ public class Aircraft
         Scanner sc = new Scanner (System.in);
         
         String choice = "";
-        /*do
-        {
-            System.out.println("Finalizar Sessao?");
-            choice = sc.nextLine();
-            if (!choice.equals("sim") && !choice.equals("nao")) {
-                System.out.println("Comando invalido");
-            }
-            
-            //System.out.println(!(choice.equals("sim") || choice.equals("nao")));
-        }
-        while (!(choice.equals("sim") || choice.equals("nao")));
         
-        if (choice.equalsIgnoreCase("sim"))
-        {
-            printTicket(user);
-        }*/
         printTicket(user);
     }
 
