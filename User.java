@@ -1,3 +1,11 @@
+/**
+ * Aircraft is a plane ticket selling program
+ * User is a class for user account objects
+ *  
+ * @author Gabriel Bonoto and Juliano Maia
+ * @version 2023.06.23
+ */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.PrintStream;

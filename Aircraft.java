@@ -1,3 +1,11 @@
+/**
+ * Aircraft is a plane ticket selling program
+ * Aircraft is a class for creating aircraft objects with seats that can be bought
+ * 
+ * @author Gabriel Bonoto and Juliano Maia
+ * @version 2023.06.23
+ */
+
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.io.PrintStream;

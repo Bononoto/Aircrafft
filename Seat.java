@@ -1,3 +1,11 @@
+/**
+ * Aircraft is a plane ticket selling program
+ * Seat is a class for airplane seats objects
+ * 
+ * @author Gabriel Bonoto and Juliano Maia
+ * @version 2023.06.23
+ */
+
 public class Seat
 {
     // Object variables

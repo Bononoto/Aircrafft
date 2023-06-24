@@ -1,3 +1,11 @@
+/**
+ * Aircraft is a plane ticket selling program
+ * Cpf is a class for checking cpf numbers
+ * 
+ * @author Gabriel Bonoto and Juliano Maia
+ * @version 2023.06.23
+ */
+
 public class Cpf {
     // Checks if cpf is valid
     public static boolean checkValid(String cpf)

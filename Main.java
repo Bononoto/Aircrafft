@@ -1,5 +1,6 @@
 /**
  * Aircraft is a plane ticket selling program
+ * Main executes the main function of the program
  * 
  * @author Gabriel Bonoto and Juliano Maia
  * @version 2023.06.23
